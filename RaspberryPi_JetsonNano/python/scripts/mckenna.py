@@ -3,7 +3,7 @@
 import sys
 import os
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
-framesdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'frames')
+framesdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'frames2')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
 if os.path.exists(libdir):
     sys.path.append(libdir)
@@ -30,7 +30,7 @@ try:
     logging.info("Drawing terrance...")
     image = Image.open(os.path.join(picdir, 'mckenna.bmp'))
     epd.display(epd.getbuffer(image))
-    time.sleep(10)
+    time.sleep(5)
 
     epd.init(1)
     num = 0
@@ -39,7 +39,7 @@ try:
         image = Image.open(os.path.join(framesdir, str(num) + '.bmp'))
         epd.displayPart(epd.getbuffer(image))
         num = num + 1
-        if(num == 97):
+        if(num == 1894):
             break
     
     logging.info("Clear...")
