@@ -3,6 +3,7 @@
 import sys
 import os
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'pic')
+framesdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'frames')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
 if os.path.exists(libdir):
     sys.path.append(libdir)
@@ -30,6 +31,15 @@ try:
     image = Image.open(os.path.join(picdir, 'mckenna.bmp'))
     epd.display(epd.getbuffer(image))
     time.sleep(10)
+
+    num = 0
+    while (True):
+        logging.info("Drawing lamb video...")
+        image = Image.open(os.path.join(framesdir, num + '.bmp'))
+        epd.displayPart(epd.getbuffer(image))
+        num = num + 1
+        if(num == 97):
+            break
     
     logging.info("Clear...")
     epd.init(0)
