@@ -17,7 +17,7 @@ import traceback
 logging.basicConfig(level=logging.DEBUG)
 
 try:
-    logging.info("epd1in54_V2 Demo")
+    logging.info("McKenna")
     
     epd = epd1in54_V2.EPD()
     
@@ -32,6 +32,7 @@ try:
     epd.display(epd.getbuffer(image))
     time.sleep(10)
 
+    epd.init(1)
     num = 0
     while (True):
         logging.info("Drawing lamb video...")
