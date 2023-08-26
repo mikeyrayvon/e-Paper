@@ -35,7 +35,7 @@ try:
     num = 0
     while (True):
         logging.info("Drawing lamb video...")
-        image = Image.open(os.path.join(framesdir, num + '.bmp'))
+        image = Image.open(os.path.join(framesdir, str(num) + '.bmp'))
         epd.displayPart(epd.getbuffer(image))
         num = num + 1
         if(num == 97):
