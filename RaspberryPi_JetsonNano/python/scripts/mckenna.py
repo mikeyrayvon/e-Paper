@@ -61,5 +61,7 @@ except IOError as e:
     
 except KeyboardInterrupt:    
     logging.info("ctrl + c:")
+    epd.init(0)
+    epd.Clear(0xFF)
     epd1in54_V2.epdconfig.module_exit()
     exit()
