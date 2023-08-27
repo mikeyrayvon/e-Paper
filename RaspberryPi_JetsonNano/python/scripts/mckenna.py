@@ -26,15 +26,15 @@ try:
     epd.Clear(0xFF)
     time.sleep(1)
     
-    # read bmp file 
     logging.info("Drawing terrance")
     terrance = Image.open(os.path.join(picdir, 'mckenna.bmp'))
     epd.display(epd.getbuffer(terrance))
-    time.sleep(5)
+
+    max_frames = 500
 
     logging.info("Loading frames...")
     image_list = []
-    for i in range(1, 1895):
+    for i in range(1, max_frames):
         logging.info("Loading frame " + str(i))
         image_path = os.path.join(framesdir, str(i) + '.bmp')
         image_list.append(Image.open(image_path))
@@ -55,7 +55,7 @@ try:
         logging.info("Displaying frame " + str(num))
         epd.displayPart(epd.getbuffer(image))
         num = num + 1
-        if(num == 1895):
+        if(num == max_frames):
             break
     
     logging.info("Clear...")
