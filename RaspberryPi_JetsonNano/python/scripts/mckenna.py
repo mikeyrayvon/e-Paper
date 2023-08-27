@@ -27,17 +27,31 @@ try:
     time.sleep(1)
     
     # read bmp file 
-    logging.info("Drawing terrance...")
-    image = Image.open(os.path.join(picdir, 'mckenna.bmp'))
-    epd.display(epd.getbuffer(image))
+    logging.info("Drawing terrance")
+    terrance = Image.open(os.path.join(picdir, 'mckenna.bmp'))
+    epd.display(epd.getbuffer(terrance))
     time.sleep(5)
 
-    epd.init(1)
+    logging.info("Loading frames...")
+    image_list = []
+    for i in range(1, 1895):
+        logging.info("Loading frame " + str(i))
+        image_path = os.path.join(framesdir, str(i) + '.bmp')
+        image_list.append(Image.open(image_path))
+
+    logging.info("Frames loaded! Starting video...")
+
     num = 1
     while (True):
         logging.info(time.strftime('%H:%M:%S'))
+        if num % 10 == 0:
+            logging.info("Terrance on iteration " + str(num))
+            epd.init(0)
+            epd.display(epd.getbuffer(terrance))
+            time.sleep(1)
+        epd.init(1)
         logging.info("Opening frame " + str(num))
-        image = Image.open(os.path.join(framesdir, str(num) + '.bmp'))
+        image = image_list[num - 1]
         logging.info("Displaying frame " + str(num))
         epd.displayPart(epd.getbuffer(image))
         num = num + 1
