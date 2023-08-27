@@ -35,8 +35,10 @@ try:
     epd.init(1)
     num = 1
     while (True):
-        logging.info("Drawing lamb video frame..." + str(num))
+        logging.info(time.strftime('%H:%M:%S'))
+        logging.info("Opening frame " + str(num))
         image = Image.open(os.path.join(framesdir, str(num) + '.bmp'))
+        logging.info("Displaying frame " + str(num))
         epd.displayPart(epd.getbuffer(image))
         num = num + 1
         if(num == 1895):
