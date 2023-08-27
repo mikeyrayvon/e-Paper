@@ -35,11 +35,11 @@ try:
     epd.init(1)
     num = 0
     while (True):
-        logging.info("Drawing lamb video...")
+        logging.info("Drawing lamb video frame..." + str(num))
         image = Image.open(os.path.join(framesdir, str(num) + '.bmp'))
         epd.displayPart(epd.getbuffer(image))
         num = num + 1
-        if(num == 1894):
+        if(num == 1895):
             break
     
     logging.info("Clear...")
