@@ -33,7 +33,7 @@ try:
     time.sleep(5)
 
     epd.init(1)
-    num = 0
+    num = 1
     while (True):
         logging.info("Drawing lamb video frame..." + str(num))
         image = Image.open(os.path.join(framesdir, str(num) + '.bmp'))
