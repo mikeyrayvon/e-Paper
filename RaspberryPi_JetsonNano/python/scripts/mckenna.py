@@ -31,16 +31,6 @@ try:
     epd.display(epd.getbuffer(terrance))
 
     max_frames = 500
-
-    logging.info("Loading frames...")
-    image_list = []
-    for i in range(1, max_frames):
-        logging.info("Loading frame " + str(i))
-        image_path = os.path.join(framesdir, str(i) + '.bmp')
-        image_list.append(Image.open(image_path))
-
-    logging.info("Frames loaded! Starting video...")
-
     num = 1
     while (True):
         logging.info(time.strftime('%H:%M:%S'))
@@ -51,7 +41,8 @@ try:
             time.sleep(1)
         epd.init(1)
         logging.info("Opening frame " + str(num))
-        image = image_list[num - 1]
+        image_path = os.path.join(framesdir, str(num) + '.bmp')
+        image = Image.open(image_path)
         logging.info("Displaying frame " + str(num))
         epd.displayPart(epd.getbuffer(image))
         num = num + 1
