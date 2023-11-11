@@ -35,15 +35,17 @@ try:
     while (True):
         logging.info(time.strftime('%H:%M:%S'))
         epd.init(1)
+
         logging.info("Opening frame " + str(num))
-        image_path = os.path.join(framesdir, '00' + str(num) + '.bmp')
-        image = Image.open(image_path)
+        bmp = Image.open(os.path.join(framesdir, '00' + str(num) + '.bmp'))
+
         logging.info("Displaying frame " + str(num))
-        epd.displayPart(epd.getbuffer(image))
+        epd.display_4Gray(epd.getbuffer_4Gray(bmp))
+
         if(num == max_frames):
             logging.info("Terrance on iteration " + str(num))
             epd.init(0)
-            epd.display(epd.getbuffer(terrance))
+            epd.display_4Gray(epd.getbuffer_4Gray(terrance))
             time.sleep(1)
             num = 1
         else: 
