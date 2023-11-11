@@ -23,7 +23,7 @@ try:
     
     logging.info("init and Clear")
     epd.init(0)
-    epd.Clear(0xFF)
+    epd.Clear(0xFF, 0)
     time.sleep(1)
     
     logging.info("Drawing terrance")
@@ -55,7 +55,7 @@ except IOError as e:
 except KeyboardInterrupt:    
     logging.info("ctrl + c:")
     epd.init(0)
-    epd.Clear(0xFF)
+    epd.Clear(0xFF, 0)
     epd1in54_V2.epdconfig.module_exit()
     exit()
 
