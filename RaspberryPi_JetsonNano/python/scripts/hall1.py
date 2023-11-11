@@ -28,7 +28,7 @@ try:
     
     logging.info("Drawing terrance")
     terrance = Image.open(os.path.join(picdir, 'mckenna.bmp'))
-    epd.display(epd.getbuffer(terrance))
+    epd.display_4Gray(epd.getbuffer_4Gray(terrance))
 
     max_frames = 14
     num = 1
