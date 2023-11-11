@@ -53,6 +53,7 @@ try:
             epd.Clear(0xFF, 0)
             epd.display_4Gray(epd.getbuffer_4Gray(Himage2))
             time.sleep(1)
+            epd.init(1)
             num = 1
         else: 
             num = num + 1
