@@ -44,8 +44,6 @@ try:
         bmp = Image.open(os.path.join(framesdir, str(num) + '.bmp'))
         logging.info("Displaying frame " + str(num))
         epd.display_1Gray(epd.getbuffer(bmp))
-        if (num == 6):
-            epd.display_4Gray(epd.getbuffer_4Gray(Himage2))
 
         if(num == max_frames):
             logging.info("Terrance on iteration " + str(num))
