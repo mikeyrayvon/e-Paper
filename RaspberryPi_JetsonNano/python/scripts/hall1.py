@@ -28,24 +28,26 @@ try:
     
     logging.info("Drawing terrance")
     terrance = Image.open(os.path.join(picdir, 'mckenna.bmp'))
-    epd.display_4Gray(epd.getbuffer_4Gray(terrance))
+    epd.display_1Gray(epd.getbuffer(terrance))
 
     max_frames = 14
     num = 1
+
+    epd.init(1)
+    epd.Clear(0xFF, 1)
+
     while (True):
         logging.info(time.strftime('%H:%M:%S'))
-        epd.init(1)
-
         logging.info("Opening frame " + str(num))
         bmp = Image.open(os.path.join(framesdir, str(num) + '.bmp'))
-
         logging.info("Displaying frame " + str(num))
-        epd.display_4Gray(epd.getbuffer_4Gray(bmp))
+        epd.display_1Gray(epd.getbuffer(bmp))
 
         if(num == max_frames):
             logging.info("Terrance on iteration " + str(num))
             epd.init(0)
-            epd.display_4Gray(epd.getbuffer_4Gray(terrance))
+            epd.Clear(0xFF, 0)
+            epd.display_1Gray(epd.getbuffer(terrance))
             time.sleep(1)
             num = 1
         else: 
