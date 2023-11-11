@@ -27,8 +27,10 @@ try:
     time.sleep(1)
     
     logging.info("Drawing terrance")
+    Himage2 = Image.new('1', (epd.height, epd.width), 255)  # 25
     terrance = Image.open(os.path.join(picdir, 'mckenna.bmp'))
-    epd.display_1Gray(epd.getbuffer(terrance))
+    Himage2.paste(terrance, (200,50))
+    epd.display_4Gray(epd.getbuffer_4Gray(Himage2))
 
     max_frames = 14
     num = 1
@@ -47,8 +49,9 @@ try:
             logging.info("Terrance on iteration " + str(num))
             epd.init(0)
             epd.Clear(0xFF, 0)
-            epd.display_1Gray(epd.getbuffer(terrance))
+            epd.display_4Gray(epd.getbuffer_4Gray(Himage2))
             time.sleep(1)
+            epd.Clear(0xFF, 0)
             num = 1
         else: 
             num = num + 1
