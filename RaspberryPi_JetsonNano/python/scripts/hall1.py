@@ -37,7 +37,7 @@ try:
         epd.init(1)
 
         logging.info("Opening frame " + str(num))
-        bmp = Image.open(os.path.join(framesdir, '00' + str(num) + '.bmp'))
+        bmp = Image.open(os.path.join(framesdir, str(num) + '.bmp'))
 
         logging.info("Displaying frame " + str(num))
         epd.display_4Gray(epd.getbuffer_4Gray(bmp))
