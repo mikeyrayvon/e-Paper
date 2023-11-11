@@ -45,16 +45,16 @@ try:
         logging.info("Displaying frame " + str(num))
         epd.display_1Gray(epd.getbuffer(bmp))
 
-        if(num == max_frames):
-            logging.info("Terrance on iteration " + str(num))
-            epd.init(0)
-            epd.Clear(0xFF, 0)
-            epd.display_4Gray(epd.getbuffer_4Gray(Himage2))
-            time.sleep(1)
-            epd.init(1)
-            num = 1
-        else: 
-            num = num + 1
+        #if(num == max_frames):
+        #    logging.info("Terrance on iteration " + str(num))
+        #    epd.init(0)
+        #    epd.Clear(0xFF, 0)
+        #    epd.display_4Gray(epd.getbuffer_4Gray(Himage2))
+        #    time.sleep(1)
+        #    epd.init(1)
+        #    num = 1
+        #else: 
+        num = num + 1
         
 except IOError as e:
     logging.info(e)
